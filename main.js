@@ -45,7 +45,7 @@ class Library{
                 book = this.shelf[i];
                 this.shelf.splice(i, 1);
                 this.checkedOut.push(book);
-                console.log(this.shelf);
+                // console.log(this.shelf);
             }
         }
         saveLibrary();
