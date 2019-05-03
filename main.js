@@ -1,3 +1,10 @@
+let checkout = document.getElementById("checkoutBooks");
+let checkoutDiv = document.getElementById("checkoutDiv");
+let returnBooks = document.getElementById("returnBooks");
+let returnDiv = document.getElementById("returnDiv");
+let DAddBook = document.getElementById("addBook");
+let mainDOM = document.getElementById("main");
+
 class Library{
     constructor(){
         this.shelf = [];
@@ -43,6 +50,7 @@ class Library{
         }
         saveLibrary();
         fillLibrary();
+        showReturnBooks();
         if(found){
             return book;
         }
@@ -63,6 +71,7 @@ class Library{
         }
         saveLibrary();
         fillLibrary();
+        showcheckOut();
         if(found){
             return book;
         }
@@ -86,8 +95,6 @@ function fillLibrary(){
     loadLibrary();
     let checkoutFill = "";
     let returnFill = "";
-    let checkout = document.getElementById("checkoutBooks");
-    let returnBooks = document.getElementById("returnBooks");
     library.shelf.forEach(book => {
         checkoutFill += `<li id="book${book.id}"><p>${book.title}</p><p>${book.author}</p><button onclick="library.checkOut(${book.id})">CHECKOUT</button><button onclick="library.removeBook(${book.id})">DELETE</button></li>`;
     });
@@ -102,8 +109,11 @@ function addToLibrary(){
     let title = document.getElementById("bookTitle").value;
     let author = document.getElementById("bookAuthor").value;
     let book = new Book(library.numBooks, title, author);
+    document.getElementById("bookTitle").value = "";
+    document.getElementById("bookAuthor").value = "";
     library.addBook(book);
     fillLibrary();
+    showcheckOut();
 }
 
 function saveLibrary(){
@@ -123,5 +133,31 @@ function loadLibrary(){
   library.checkedOut = fromStorage.checkedOut;
   library.numBooks = fromStorage.numBooks;
 }
+
+function hideAll(){
+  mainDOM.style.display = "none";
+  DAddBook.style.display = "none";
+  returnDiv.style.display = "none";
+  checkoutDiv.style.display = "none";
+}
+
+function showDAddBook(){
+  hideAll();
+  DAddBook.style.display = "block";
+}
+
+function showReturnBooks(){
+  hideAll();
+  mainDOM.style.display = "block";
+  returnDiv.style.display = "block";
+}
+
+function showcheckOut(){
+  hideAll();
+  mainDOM.style.display = "block";
+  checkoutDiv.style.display = "block";
+}
+
+showcheckOut();
 
 fillLibrary();

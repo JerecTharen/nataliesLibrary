@@ -1,3 +1,28 @@
+html{
+  width: 100%;
+  height: auto;
+}
 body{
     background-color: aqua;
+    width: 100%;
+    height: auto;
+    color: #7A7978;
+}
+
+#nav{
+  display: flex;
+  width: 100%;
+  /* justify-content: space-around; */
+  list-style: none;
+}
+
+#nav li{
+  background-color: #3F334D;
+  padding: 1em;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #8DE4FF;
+}
+#nav li:hover{
+  background-color: #8AC4FF;
 }
