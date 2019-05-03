@@ -6,14 +6,23 @@
         <script src="./main.js" defer></script>
     </head>
     <body>
+        <ul id="nav">
+          <li onclick="showcheckOut()">Checkout A Book</li>
+          <li onclick="showReturnBooks()">Return A Book</li>
+          <li onclick="showDAddBook()">Add Books</li>
+        </ul>
         <h1>Welcome to Natalie's Library!</h1>
         <div id="main">
-            <h3>Checkout a Book!</h3>
-            <ul id="checkoutBooks">
-            </ul>
-            <h3>Return a Book</h3>
-            <ul id="returnBooks">
-            </ul>
+            <div id="checkoutDiv">
+              <h3>Checkout a Book!</h3>
+              <ul id="checkoutBooks">
+              </ul>
+            </div>
+            <div id="returnDiv">
+              <h3>Return a Book</h3>
+              <ul id="returnBooks">
+              </ul>
+            </div>
         </div>
         <div id="addBook">
                 <h3>Add a Book to the Library</h3>
