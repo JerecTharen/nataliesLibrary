@@ -99,6 +99,16 @@ function addToLibrary(){
     let book = new Book(library.numBooks, title, author);
     library.addBook(book);
     fillLibrary();
+    saveLibrary();
+}
+
+function saveLibrary(){
+  let storeMe = {
+    shelf: library.shelf,
+    checkedOut: library.checkedOut,
+    numBooks: library.numBooks,
+  };
+  window.localStorage.setItem("nLib", JSON.stringify(storeMe));
 }
 
 fillLibrary();
