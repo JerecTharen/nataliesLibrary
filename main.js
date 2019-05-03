@@ -7,6 +7,7 @@ class Library{
     addBook(book){
         this.shelf.push(book);
         this.numBooks++;
+        saveLibrary();
     }
     removeBook(id){
         let found = false;
@@ -24,6 +25,7 @@ class Library{
                 }
             }
         }
+        saveLibrary();
         fillLibrary();
         return found;
     }
@@ -39,6 +41,7 @@ class Library{
                 console.log(this.shelf);
             }
         }
+        saveLibrary();
         fillLibrary();
         if(found){
             return book;
@@ -58,6 +61,7 @@ class Library{
                 this.shelf.push(book);
             }
         }
+        saveLibrary();
         fillLibrary();
         if(found){
             return book;
@@ -79,6 +83,7 @@ class Book{
 let library = new Library();
 
 function fillLibrary(){
+    loadLibrary();
     let checkoutFill = "";
     let returnFill = "";
     let checkout = document.getElementById("checkoutBooks");
@@ -99,16 +104,24 @@ function addToLibrary(){
     let book = new Book(library.numBooks, title, author);
     library.addBook(book);
     fillLibrary();
-    saveLibrary();
 }
 
 function saveLibrary(){
+  // console.log(library);
   let storeMe = {
     shelf: library.shelf,
     checkedOut: library.checkedOut,
     numBooks: library.numBooks,
   };
   window.localStorage.setItem("nLib", JSON.stringify(storeMe));
+}
+
+function loadLibrary(){
+  // console.log(library);
+  let fromStorage = JSON.parse(window.localStorage.getItem("nLib"));
+  library.shelf = fromStorage.shelf;
+  library.checkedOut = fromStorage.checkedOut;
+  library.numBooks = fromStorage.numBooks;
 }
 
 fillLibrary();
