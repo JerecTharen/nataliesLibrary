@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Natalies Library</title>
+        <link rel="stylesheet" type="text/css" href="./style.css" />
+        <script src="./main.js" defer></script>
+    </head>
+    <body>
+        <h1>Welcome to Natalie's Library!</h1>
+        <div id="main">
+            <h3>Checkout a Book!</h3>
+            <ul id="checkoutBooks">
+            </ul>
+            <h3>Return a Book</h3>
+            <ul id="returnBooks">
+            </ul>
+        </div>
+        <div id="addBook">
+                <h3>Add a Book to the Library</h3>
+                <div id="books">
+                    <label for="bookTitle">Title: </label>
+                    <input id="bookTitle" type="text" placeholder="Book Title" required />
+                    <label for="bookAuthor">Author: </label>
+                    <input id="bookAuthor" type="text" placeholder="Book Author" required />
+                    <button onclick="addToLibrary()">ADD BOOK</button>
+                </div>
+            </div>
+    </body>
+</html>
